@@ -7,10 +7,7 @@ Andorid学习过程中的重难点整理，包括个人的一些读书笔记和�
 
 
 #联系方式
-我的CSDN：http://blog.csdn.net/mxm691292118?viewmode=list
-
-我的微信：mxm691292118
-
+博客：http://miomin.xyz
 
 #目录
 
