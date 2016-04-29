@@ -1,9 +1,10 @@
 # Andorid难点整理
+
 Andorid学习过程中的重难点整理，包括个人的一些读书笔记和博客
 
 如有需要修正的错误或补充，可以发送pull request或issues
 
-如果你觉得对你有帮助，希望star/follow一下打个赏
+如果你觉得对你有帮助，希望star/follow一下打个赏 
 
 
 # 关于作者
