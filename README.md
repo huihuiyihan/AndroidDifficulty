@@ -13,6 +13,8 @@ Andorid学习过程中的重难点整理，包括个人的一些读书笔记和�
 
 CSDN：http://blog.csdn.net/mxm691292118
 
+Email：miomin_93@foxmail.com
+
 # 目录
 
 [00【学习清单】我的Android学习清单](https://github.com/miomin/AndroidDifficulty/blob/master/00%E3%80%90%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95%E3%80%91%E6%88%91%E7%9A%84Android%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95.md)
