@@ -1,6 +1,5 @@
-***博客地址：***http://blog.csdn.net/mxm691292118/article/details/51107039
 
-如果对你有帮助，欢迎star和follow哟，保持关注，持续更新。
+如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
 
 ----------
 
@@ -42,7 +41,6 @@
 
 ----------
 
-***博客地址：***http://blog.csdn.net/mxm691292118/article/details/51107039
 
-如果对你有帮助，欢迎star和follow哟，保持关注，持续更新。
+如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
 
