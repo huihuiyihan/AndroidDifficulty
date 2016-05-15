@@ -1,6 +1,5 @@
-***博客地址：***http://blog.csdn.net/mxm691292118/article/details/50996938
 
-如果对你有帮助，欢迎star和follow哟，保持关注，持续更新。
+如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
 
 ----------
 
@@ -116,8 +115,5 @@ public final class Integer extends Number implements Comparable<Integer> {
   - 不是一种算法思想，而是把内存划分为[新生代](1)和[老生代](1)，对不同区域采用不同的垃圾收集算法。
  
 ----------
-
-
-***博客地址：***http://blog.csdn.net/mxm691292118/article/details/50996938
 
 如果对你有帮助，欢迎star和follow哟，保持关注，持续更新。
