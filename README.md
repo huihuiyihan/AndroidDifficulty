@@ -36,6 +36,8 @@ Email：miomin_93@foxmail.com
 
 [09【码上杂谈】关于之前对Server上允许的最大TCP连接数理解错误的更正](https://github.com/miomin/AndroidDifficulty/blob/master/09%E3%80%90%E7%A0%81%E4%B8%8A%E6%9D%82%E8%B0%88%E3%80%91%E5%85%B3%E4%BA%8E%E4%B9%8B%E5%89%8D%E5%AF%B9Server%E4%B8%8A%E5%85%81%E8%AE%B8%E7%9A%84%E6%9C%80%E5%A4%A7TCP%E8%BF%9E%E6%8E%A5%E6%95%B0%E7%90%86%E8%A7%A3%E9%94%99%E8%AF%AF%E7%9A%84%E6%9B%B4%E6%AD%A3.md)
 
+[10【Android性能优化】使用NDK进行Java和C++混编](https://github.com/miomin/AndroidDifficulty/blob/master/10%E3%80%90Android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E3%80%91%E4%BD%BF%E7%94%A8NDK%E8%BF%9B%E8%A1%8CJava%E5%92%8CC%2B%2B%E6%B7%B7%E7%BC%96.md)
+
 
 
 
