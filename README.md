@@ -6,17 +6,11 @@ Andorid学习过程中的重难点整理，还包括一些读书笔记
 
 如果你觉得对你有帮助，希望star一下给个鼓励
 
-# 关于作者
 
-博客：http://miomin.coding.me/
-
-CSDN：http://blog.csdn.net/mxm691292118
-
-Email：miomin_93@foxmail.com
 
 # 目录
 
-[00【学习清单】我的Android学习清单](https://github.com/miomin/AndroidDifficulty/blob/master/00%E3%80%90%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95%E3%80%91%E6%88%91%E7%9A%84Android%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95.md)
+[00 Android学习路线](https://github.com/miomin/AndroidDifficulty/blob/master/00%E3%80%90%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95%E3%80%91%E6%88%91%E7%9A%84Android%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95.md)
 
 [01【深入理解JVM】JVM内存分块和垃圾收集算法（HotSpot）](https://github.com/miomin/AndroidDifficulty/blob/master/01%E3%80%90%E7%90%86%E8%A7%A3JVM%E3%80%91JVM%E5%86%85%E5%AD%98%E5%88%86%E5%9D%97%E5%92%8C%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95%EF%BC%88HotSpot%EF%BC%89.md)
 
