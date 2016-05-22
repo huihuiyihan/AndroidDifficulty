@@ -34,7 +34,7 @@
 　　
 　　include标签可以帮助我们把公共元素提取出来，作为一个子布局，在每一个需要共用这个子布局的布局中通过include引入即可。
 
-```
+``` Xml
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -83,7 +83,7 @@
 
  - **布局的代码如下：**
 
-```
+``` Xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -109,7 +109,7 @@
 
  - **延迟加载布局：**
 
-```
+``` Java
 final ViewStub viewStub = (ViewStub) findViewById(R.id.comment_stub);
 
 findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
