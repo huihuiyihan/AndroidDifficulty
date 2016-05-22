@@ -34,13 +34,3 @@
 
   - 写Android的小伙伴可以在Android Studio中打开HashTable的源码看看，Google很明显的改动了Hashtable的index计算方式，改成跟Hashmap一样啦！
 ![这里写图片描述](http://img.blog.csdn.net/20160409201704697)
-
-
-
-
-
-----------
-
-
-如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
-

@@ -4,7 +4,6 @@
 
 ----------
 
-
  - ***引言：***在Java中，可以使用关键字synchronized来实现同步访问，从Java 5之后，在java.util.concurrent.locks包下提供了另外一种方式来实现同步访问，那就是Lock。既然都可以通过synchronized来实现同步访问了，那么为什么还需要提供Lock？那得先从synchronized的缺陷讲起。
 
 
@@ -59,7 +58,7 @@ lock.lock();
 try{
     //处理任务
 }catch(Exception ex){
-     
+
 }finally{
     lock.unlock();   //释放锁
 }
@@ -78,10 +77,10 @@ if(lock.tryLock()) {
      try{
          //处理任务
      }catch(Exception ex){
-         
+
      }finally{
          lock.unlock();   //释放锁
-     } 
+     }
 }else {
     //如果不能获取锁，则直接做其他事情
 }
@@ -120,20 +119,20 @@ public class Test {
     private Lock lock = new ReentrantLock();    
     public static void main(String[] args)  {
         final Test test = new Test();
-         
+
         new Thread(){
             public void run() {
                 test.insert(Thread.currentThread());
             };
         }.start();
-         
+
         new Thread(){
             public void run() {
                 test.insert(Thread.currentThread());
             };
         }.start();
     }  
-     
+
     public void insert(Thread thread) {
         lock.lock();
         try {
@@ -159,20 +158,20 @@ public class Test {
     private Lock lock = new ReentrantLock();    //注意这个地方
     public static void main(String[] args)  {
         final Test test = new Test();
-         
+
         new Thread(){
             public void run() {
                 test.insert(Thread.currentThread());
             };
         }.start();
-         
+
         new Thread(){
             public void run() {
                 test.insert(Thread.currentThread());
             };
         }.start();
     }  
-     
+
     public void insert(Thread thread) {
         if(lock.tryLock()) {
             try {
@@ -204,7 +203,7 @@ public class Test {
         MyThread thread2 = new MyThread(test);
         thread1.start();
         thread2.start();
-         
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -212,7 +211,7 @@ public class Test {
         }
         thread2.interrupt();
     }  
-     
+
     public void insert(Thread thread) throws InterruptedException{
         lock.lockInterruptibly();   //注意，如果需要正确中断等待锁的线程，必须将获取锁放在外面，然后将InterruptedException抛出
         try {  
@@ -231,7 +230,7 @@ public class Test {
         }  
     }
 }
- 
+
 class MyThread extends Thread {
     private Test test = null;
     public MyThread(Test test) {
@@ -239,7 +238,7 @@ class MyThread extends Thread {
     }
     @Override
     public void run() {
-         
+
         try {
             test.insert(Thread.currentThread());
         } catch (InterruptedException e) {
@@ -262,7 +261,7 @@ public interface ReadWriteLock {
      * @return the lock used for reading.
      */
     Lock readLock();
- 
+
     /**
      * Returns the lock used for writing.
      *
@@ -282,24 +281,24 @@ public interface ReadWriteLock {
 
 ``` Java
 public class Test {
-     
+
     public static void main(String[] args)  {
         final Test test = new Test();
-         
+
         new Thread(){
             public void run() {
                 test.get(Thread.currentThread());
             };
         }.start();
-         
+
         new Thread(){
             public void run() {
                 test.get(Thread.currentThread());
             };
         }.start();
-         
+
     }  
-     
+
     public synchronized void get(Thread thread) {
         long start = System.currentTimeMillis();
         while(System.currentTimeMillis() - start <= 1) {
@@ -317,29 +316,29 @@ public class Test {
 ``` Java
 public class Test {
     private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
-     
+
     public static void main(String[] args)  {
         final Test test = new Test();
-         
+
         new Thread(){
             public void run() {
                 test.get(Thread.currentThread());
             };
         }.start();
-         
+
         new Thread(){
             public void run() {
                 test.get(Thread.currentThread());
             };
         }.start();
-         
+
     }  
-     
+
     public void get(Thread thread) {
         rwl.readLock().lock();
         try {
             long start = System.currentTimeMillis();
-             
+
             while(System.currentTimeMillis() - start <= 1) {
                 System.out.println(thread.getName()+"正在进行读操作");
             }
@@ -368,9 +367,9 @@ class MyClass {
     public synchronized void method1() {
         method2();
     }
-     
+
     public synchronized void method2() {
-         
+
     }
 }
 ```
@@ -398,8 +397,3 @@ class MyClass {
 　　ReadWriteLock就是读写锁，它是一个接口，ReentrantReadWriteLock实现了这个接口。
 　　可以通过readLock()获取读锁，通过writeLock()获取写锁。
 　　上面已经演示过了读写锁的使用方法，在此不再赘述。
-
-----------
-
-如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
-

@@ -19,11 +19,3 @@
   - 如何标识一个TCP连接：系统用一个4四元组来唯一标识一个TCP连接：{local ip, local port,remote ip,remote port}。好吧，我们拿出《UNIX网络编程：卷一》第四章中对accept的讲解来看看概念性的东西，第二个参数cliaddr代表了客户端的ip地址和端口号。而我们作为服务端实际只使用了bind时这一个端口，说明端口号65535并不是并发量的限制。
 
   - server最大tcp连接数：server通常固定在某个本地端口上监听，等待client的连接请求。不考虑地址重用（unix的SO_REUSEADDR选项）的情况下，即使server端有多个ip，本地监听端口也是独占的，因此server端tcp连接4元组中只有remote ip（也就是client ip）和remote port（客户端port）是可变的，因此最大tcp连接为客户端ip数×客户端port数，对IPV4，不考虑ip地址分类等因素，最大tcp连接数约为2的32次方（ip数）×2的16次方（port数），也就是server端单机最大tcp连接数约为2的48次方。
-
-
-----------
-
-***博客地址：***http://blog.csdn.net/mxm691292118/article/details/50996938
-
-如果对你有帮助，欢迎star和follow哟，保持关注，持续更新。
-

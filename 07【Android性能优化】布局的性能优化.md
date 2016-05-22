@@ -119,10 +119,3 @@ findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
 	}
 });
 ```
-
-
-----------
-
-
-如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
-

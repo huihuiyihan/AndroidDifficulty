@@ -3,9 +3,7 @@
 
 ----------
 
-
-
-##一、内存泄露
+## 一、内存泄露
  - 垃圾回收器无法回收原本应该被回收的对象，这个对象就引发了内存泄露。
  - 内存泄露的危害：
   - （1）过多的内存泄露最终会导致内存溢出（OOM）
@@ -15,7 +13,7 @@
 ----------
 
 
-##二、内存溢出（OOM）
+## 二、内存溢出（OOM）
 
  - Android为每个进程设置Dalvik Heap Size阈值，这个阈值在不同的设备上会因为RAM大小不同而各有差异。如果APP想要分配的内存超过这个阈值，就会发生OOM。
 
@@ -29,7 +27,7 @@
 
 ----------
 
-##三、如何避免内存泄漏
+## 三、如何避免内存泄漏
 
 参考在MDCC 2015中国移动开发者大会上[胡凯](http://hukai.me)前辈的讲述，整理总结。
 
@@ -83,7 +81,7 @@
 
  - 正确的代码示例：
 
-```
+``` Java
 static class ImageDownloadTask extends AsyncTask<String, Void, Bitmap> {
 
         private String url;
@@ -127,7 +125,7 @@ static class ImageDownloadTask extends AsyncTask<String, Void, Bitmap> {
 
  - Handler的正确写法：
 
-```
+``` Java
 private static class MyHandler extends Handler {
 
 	private final WeakReference<Context> context;
@@ -165,7 +163,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
  - Thread的正确写法：
 
-```
+``` Java
 private static class MyThread extends Thread {
 
 	@Override
@@ -175,7 +173,7 @@ private static class MyThread extends Thread {
 		}
 	}
 }
-    
+
 new MyThread().start();
 ```
 
@@ -213,12 +211,12 @@ new MyThread().start();
 
 
 ----------
-##四、内存泄露检测
+## 四、内存泄露检测
  - 这里介绍LeakCanary，一款非常好用的内存泄露检测工具，安装在手机上，能够通过Log的方式告诉你是哪块代码发生了内存泄露。
 
  - 使用方法，在Application中install LeakCanary（默认只能检测Activity内容的内存泄露）：
 
-```
+``` Java
 public class MyApplication extends Application {
 
   @Override public void onCreate() {
@@ -230,7 +228,7 @@ public class MyApplication extends Application {
 
  - 想要检测更多，首先注册一个RefWatcher：
 
-```
+``` Java
 public class MyApplication extends Application {
 
     private static RefWatcher sRefWatcher;
@@ -248,12 +246,12 @@ public class MyApplication extends Application {
 ```
 
  - 然后对某个可能发生泄露的占用大内存的对象进行监测：
-```
+``` Java
 MyApplication.getRefWatcher().watch(sLeaky);
 ```
 
 - 对Fragment、BroadcastReceiver、Service进行监测：
-```
+``` Java
 public class MyFragment extends Fragment {
     @Override
     public void onDestroy() {
@@ -265,19 +263,12 @@ public class MyFragment extends Fragment {
 
  - 具体就不多说，大家去LeakCanary的Github上看就行了，地址是：https://github.com/square/leakcanary
 
-
-
 ----------
-##参考文献
+## 参考文献
  - [Andorid内存优化之OOM](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0920/3478.html)
  - [Android性能优化典范（一）](http://www.csdn.net/article/2015-01-20/2823621-android-performance-patterns)
  - [Android性能优化典范（二）](http://www.csdn.net/article/2015-04-29/2824583-android-performance-patterns-season-2)
  - [Android性能优化典范（三）](http://www.csdn.net/article/2015-08-12/2825447-android-performance-patterns-season-3)
  - [Android性能优化之内存篇](http://hukai.me/android-performance-memory/)
  - [Android官方学习教程](http://hukai.me/android-training-course-in-chinese/graphics/displaying-bitmaps/manage-memory.html)
-
-
 ----------
-
-如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
-

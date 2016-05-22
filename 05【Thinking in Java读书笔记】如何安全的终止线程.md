@@ -11,7 +11,7 @@
 
 
 ----------
-##一、线程进入阻塞态的原因
+## 一、线程进入阻塞态的原因
 
  - 在阻塞态中终止线程，需要做一些处理，让线程跳出阻塞态，所以有必要先来了解一些一个任务进入阻塞态的原因：
 
@@ -24,11 +24,11 @@
 
 
 ----------
-##二、通过标识符终止线程
+## 二、通过标识符终止线程
 
  - 通过设置flag为false的方式，让线程跳出while循环，从而终止线程。（如果线程已经进入while循环，且处于阻塞状态，这种方式将无法立即解除线程阻塞）
 
-```
+``` Java
 	static class MyThread extends Thread {
 
 		private volatile boolean isRunning = true;
@@ -47,11 +47,11 @@
 ```
 
 ----------
-##三、调用interrupt（）
+## 三、调用interrupt（）
 
  - 很显然，这是一种更优雅的终止线程方式，配合Thread.interrupted()的检测，在阻塞中通过抛出异常来安全退出线程。
 
-```
+``` Java
 	static class MyThread extends Thread {
 
 		@Override
@@ -74,9 +74,3 @@
 	// 终止线程
 	myThread.interrupt();
 ```
-
-----------
-
-
-如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
-

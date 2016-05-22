@@ -138,7 +138,7 @@ static {
             System.loadLibrary("JniUtils");//之前在build.gradle里面设置的so名字，必须一致}
             success = true;
         } catch (Throwable e) {
-            
+
         }
 }
 ```

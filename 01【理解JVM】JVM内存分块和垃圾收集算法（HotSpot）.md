@@ -3,7 +3,7 @@
 
 ----------
 
-##一、JVM内存分块
+## 一、JVM内存分块
 每一个进程会对应一个JVM实例，JVM在执行Java程序时，会将该进程获取到的内存划分成不同的数据块，这些区域有各自不同的用途和生命周期，参考《深入理解JVM虚拟机》，总结出以下结论：
 
  - **（1）PC**：每个线程有独立的PC，PC的值指向程序即将执行的下一条指令的地址。
@@ -22,7 +22,7 @@
 
  - String源代码：
 
-```
+``` Java
 public final class String implements Serializable, Comparable<String>, CharSequence {
 
     private static final char REPLACEMENT_CHAR = (char) 0xfffd;
@@ -33,7 +33,7 @@ public final class String implements Serializable, Comparable<String>, CharSeque
 
  - Integer源代码：
 
-```
+``` Java
 public final class Integer extends Number implements Comparable<Integer> {
 
     /**
@@ -48,7 +48,7 @@ public final class Integer extends Number implements Comparable<Integer> {
 
 ----------
 
-##二、new一个对象的过程
+## 二、new一个对象的过程
  - （1）先检查该对象代表的类有没有被加载过，如果没有，必须先进行类的加载过程
  - （2）从Java堆中划分一块内存出来给对象使用
  - （3）先后执行static代码块（先父后子）
@@ -60,7 +60,7 @@ public final class Integer extends Number implements Comparable<Integer> {
 
 ----------
 
-##三、垃圾收集
+## 三、垃圾收集
   虽说JVM的GC是自动化的，但是为了排查各种内存溢出、内存泄露的问题，需要对GC技术做进一步了解。《深入理解JVM虚拟机》书中提到，垃圾回收应该思考三件事情：
 
  - [哪些内存需要回收？](1)
@@ -113,7 +113,3 @@ public final class Integer extends Number implements Comparable<Integer> {
 
  - **（4）分代收集算法（Generational Collection）**：
   - 不是一种算法思想，而是把内存划分为[新生代](1)和[老生代](1)，对不同区域采用不同的垃圾收集算法。
- 
-----------
-
-如果对你有帮助，欢迎star和follow哟，保持关注，持续更新。

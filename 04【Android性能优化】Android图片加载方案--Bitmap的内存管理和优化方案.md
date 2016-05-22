@@ -11,7 +11,7 @@
 ----------
 
 
-###一、加载按显示需要的比例缩小的图片
+### 一、加载按显示需要的比例缩小的图片
 
 ***1、先来说说屏幕密度***
 
@@ -23,7 +23,8 @@
 
  - 下面的代码是动态获取一个ImageView的长宽像素：
 **注意：**返回的是像素值（px），而不是dp/dip
-```
+
+``` Java
 	int reqHeight = iv.getLayoutParams().height;
 	int reqWidth = iv.getLayoutParams().width;
 ```
@@ -35,7 +36,7 @@
  - 一般来说，加载本地资源图片才需要压缩，加载网络图片，应该让服务器按需压缩，一方面节省流量，另一方面提高加载流畅度
  - 可以通过下面的代码计算inSampleSize的值，就是需要压缩的倍数：
 
-```
+``` Java
 //reqWidth和reqHeight是需要显示的Imageview的width和height
 public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
@@ -61,7 +62,8 @@ public static int calculateInSampleSize(
 
  - **通过下面的方法可以获得压缩后的Bitmap：**
 ***注意：***可以通过设置 inJustDecodeBounds 属性为true可以在解码的时候避免内存的分配，它会返回一个null的Bitmap，但是可以获取到 outWidth, outHeight 与 outMimeType。确定好压缩比例后，再将inJustDecodeBounds设置为false。
-```
+
+``` Java
 public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
         int reqWidth, int reqHeight) {
 
@@ -82,7 +84,7 @@ public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
 ----------
 
 
-###二、Bitmap缓存
+### 二、Bitmap缓存
 ***1、缓存类LruCache介绍***
 
  - 在Android3.0之后，一般使用LruCache来缓存Bitmap，它使用一个强引用的LinkedHashMap保存最近引用的对象，并且在缓存超出设置大小的时候剔除（evict）最少使用到的对象。
@@ -101,7 +103,7 @@ public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
 
  - 代码参考了一个大神的代码，并修真了一些写的不对和不好的地方。
 
-```
+``` Java
 public class PhotoAdapter extends BaseAdapter implements AbsListView.OnScrollListener {
 
     // 从network下载图片的线程集合
@@ -382,7 +384,7 @@ public class PhotoAdapter extends BaseAdapter implements AbsListView.OnScrollLis
  - 在Android3.0之前，Bitmap对象与数据是分开存储的，Bitmap对象存储在Java heap中，而像素数据存储在Native Memory中，Java虚拟机的垃圾回收机制不会主动回收Native Memory中的对象，需要在Bitmap不需要使用的时候，主动调用recycle()方法来释放，而在Android3.0之后，Bitmap的像素数据和Bitmap对象都存放在Java Heap中，所以不需要手动调用recycle()来释放，垃圾收集器会处理。
  - 应该在什么时候去调用recycle()方法呢？可以用引用计数算法，用一个变量来记录Bitmap显示情况，如果Bitmap绘制在View上面displayRefCount加一, 否则就减一, 只有在displayResCount为0且Bitmap不为空且Bitmap没有调用过recycle()的时候，才调用recycle()，下面用BitmapDrawable类来包装下Bitmap对象，代码如下：
 
-```
+``` Java
 public class RecycleBitmapDrawable extends BitmapDrawable {
 	private int displayResCount = 0;
 	private boolean mHasBeenDisplayed;
@@ -390,8 +392,8 @@ public class RecycleBitmapDrawable extends BitmapDrawable {
     public RecycleBitmapDrawable(Resources res, Bitmap bitmap) {
         super(res, bitmap);
     }
-	
-    
+
+
     /**
      * @param isDisplay
      */
@@ -404,10 +406,10 @@ public class RecycleBitmapDrawable extends BitmapDrawable {
 				displayResCount --;
 			}
 		}
-		
+
 		checkState();
 	}
-	
+
 	/**
 	 * 检查图片的一些状态，判断是否需要调用recycle
 	 */
@@ -417,8 +419,8 @@ public class RecycleBitmapDrawable extends BitmapDrawable {
 	        getBitmap().recycle();
 	    }
 	}
-	
-	
+
+
 	/**
 	 * 判断Bitmap是否为空且是否调用过recycle()
 	 * @return
@@ -433,45 +435,45 @@ public class RecycleBitmapDrawable extends BitmapDrawable {
 
 - 还需要一个自定义的ImageView，重写了setImageDrawable()方法，在这个方法中我们先获取ImageView上面的图片，然后通知之前显示在ImageView的Drawable不在显示了，Drawable会判断是否需要调用recycle()，代码如下：
 
-```
+``` Java
 public class RecycleImageView extends ImageView {
-  
+
     public RecycleImageView(Context context) {  
         super(context);  
     }  
-  
+
     public RecycleImageView(Context context, AttributeSet attrs) {  
         super(context, attrs);  
     }  
-  
+
     public RecycleImageView(Context context, AttributeSet attrs, int defStyle) {  
         super(context, attrs, defStyle);  
     }  
-  
+
     @Override  
     public void setImageDrawable(Drawable drawable) {  
         Drawable previousDrawable = getDrawable();  
         super.setImageDrawable(drawable);  
-          
+
         //显示新的drawable  
         notifyDrawable(drawable, true);  
-  
+
         //回收之前的图片  
         notifyDrawable(previousDrawable, false);  
     }  
-  
+
     @Override  
     protected void onDetachedFromWindow() {  
         //当View从窗口脱离的时候,清除drawable  
         setImageDrawable(null);  
         super.onDetachedFromWindow();  
     }  
-  
-    /** 
-     * 通知该drawable显示或者隐藏 
+
+    /**
+     * 通知该drawable显示或者隐藏
      *  
-     * @param drawable 
-     * @param isDisplayed 
+     * @param drawable
+     * @param isDisplayed
      */  
     public static void notifyDrawable(Drawable drawable, boolean isDisplayed) {  
         if (drawable instanceof RecycleBitmapDrawable) {  
@@ -483,17 +485,12 @@ public class RecycleImageView extends ImageView {
             }  
         }  
     }  
-  
+
 }
 ```
 
  - 具体的使用方法如下
-```
+``` Java
 ImageView imageView = new ImageView(context);  
         imageView.setImageDrawable(new RecycleBitmapDrawable(context.getResource(), bitmap));
 ```
-
-----------
-
-如果你觉得对你有帮助的话，希望可以star/follow一下哟，我会持续保持更新。
-
