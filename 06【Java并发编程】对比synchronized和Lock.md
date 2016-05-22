@@ -12,7 +12,7 @@
 
 ----------
 
-##一、synchronized的缺陷
+## 一、synchronized的缺陷
 
 　　synchronized是java中的一个关键字，也就是说是JVM内置的特性，加锁到释放所的所有过程都由JVM来完成，程序员是不可见的。
 
@@ -44,16 +44,16 @@
 
 
 ----------
-##二、java.util.concurrent.locks包下常用的类
+## 二、java.util.concurrent.locks包下常用的类
 
-###1、Lock
+### 1、Lock
 首先要说明的就是Lock，通过查看Lock的源码可知，Lock是一个接口。
 
 　　首先lock()方法是平常使用得最多的一个方法，就是用来获取锁。如果锁已被其他线程获取，则进行等待。
 
 　　由于在前面讲到如果采用Lock，必须主动去释放锁，并且在发生异常时，不会自动释放锁。因此一般来说，使用Lock必须在try{}catch{}块中进行，并且将释放锁的操作放在finally块中进行，以保证锁一定被被释放，防止死锁的发生。通常使用Lock来进行同步的话，是以下面这种形式去使用的：
 　　
-```
+``` Java
 Lock lock = ...;
 lock.lock();
 try{
@@ -72,7 +72,7 @@ try{
 　　所以，一般情况下通过tryLock来获取锁时是这样使用的：
 　　
 
-```
+``` Java
 Lock lock = ...;
 if(lock.tryLock()) {
      try{
@@ -92,7 +92,7 @@ if(lock.tryLock()) {
 
 　　lockInterruptibly()一般的使用形式如下：
 
-```
+``` Java
 public void method() throws InterruptedException {
     lock.lockInterruptibly();
     try {  
@@ -113,7 +113,7 @@ ReentrantLock是唯一实现了Lock接口的类，并且ReentrantLock提供了�
 
 ***例子1，lock()的正确使用方法：***
 
-```
+``` Java
 public class Test {
     private ArrayList<Integer> arrayList = new ArrayList<Integer>();
     //注意这个地方，锁一定要是全局变量，不能声明在方法体中
@@ -153,7 +153,7 @@ public class Test {
 
 ***例子2，tryLock()的使用方法：***
 
-```
+``` Java
 public class Test {
     private ArrayList<Integer> arrayList = new ArrayList<Integer>();
     private Lock lock = new ReentrantLock();    //注意这个地方
@@ -195,7 +195,7 @@ public class Test {
 
 ***例子3，lockInterruptibly()响应中断的使用方法：***
 
-```
+``` Java
 public class Test {
     private Lock lock = new ReentrantLock();   
     public static void main(String[] args)  {
@@ -251,10 +251,10 @@ class MyThread extends Thread {
 
 
 
-###3、ReadWriteLock
+### 3、ReadWriteLock
 　　ReadWriteLock也是一个接口，在它里面只定义了两个方法：
 
-```
+``` Java
 public interface ReadWriteLock {
     /**
      * Returns the lock used for reading.
@@ -274,13 +274,13 @@ public interface ReadWriteLock {
 
  　　一个用来获取读锁，一个用来获取写锁。也就是说将文件的读写操作分开，分成2个锁来分配给线程，从而使得多个线程可以同时进行读操作。下面的ReentrantReadWriteLock实现了ReadWriteLock接口。
 
-###4、ReentrantReadWriteLock
+### 4、ReentrantReadWriteLock
 
 　　ReentrantReadWriteLock实现了ReadWriteLock接口。下面通过几个例子来看一下ReentrantReadWriteLock具体用法。
 
 　　假如有多个线程要同时进行读操作的话，先看一下synchronized达到的效果：
 
-```
+``` Java
 public class Test {
      
     public static void main(String[] args)  {
@@ -314,7 +314,7 @@ public class Test {
 
 　　而改成用读写锁的话：
 
-```
+``` Java
 public class Test {
     private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
      
@@ -358,12 +358,12 @@ public class Test {
 
 
 ----------
-##三、锁的相关概念介绍
-###1、可重入锁
+## 三、锁的相关概念介绍
+### 1、可重入锁
 
 　　像synchronized和ReentrantLock都是可重入锁，可重入性是说锁的分配机制：是基于线程的分配，而不是基于方法调用的分配。举个例子，当一个线程执行到某个synchronized方法时，比如说method1，而在method1中会调用另外一个synchronized方法method2，此时线程不必重新去申请锁，而是可以直接执行方法method2。
 　　
-```
+``` Java
 class MyClass {
     public synchronized void method1() {
         method2();
@@ -378,21 +378,21 @@ class MyClass {
 在JAVA环境下 ReentrantLock 和synchronized 都是可重入锁。
 可重入锁的最大好处就是防止死锁，如果没有可重入性，JVM在method1中调用method2的时候，会尝试去获取method2的锁，但是这时候MyClass的锁已经被method1获取了，所以不能分配给method2，这时就发生了死锁。
 
-###2、可中断锁
+### 2、可中断锁
 　　synchronized就不是可中断锁，而Lock是可中断锁。
 
 　　如果某一线程A正在执行锁中的代码，另一线程B正在等待获取该锁，可能由于等待时间过长，线程B不想等待了，想先处理其他事情，我们可以让它中断自己或者在别的线程中中断它，这种就是可中断锁。
 
 　　在前面演示lockInterruptibly()的用法时已经体现了Lock的可中断性。
 
-###3、公平锁
+### 3、公平锁
 　　公平锁即尽量以请求锁的顺序来获取锁。比如同是有多个线程在等待一个锁，当这个锁被释放时，等待时间最久的线程（最先请求的线程）会获得该所，这种就是公平锁。
 　　非公平锁即无法保证锁的获取是按照请求锁的顺序进行的。这样就可能导致某个或者一些线程永远获取不到锁。
 　　在Java中，synchronized就是非公平锁，它无法保证等待的线程获取锁的顺序。
 　　而对于ReentrantLock和ReentrantReadWriteLock，它默认情况下是非公平锁，但是可以设置为公平锁。
 
 
-###4、读写锁
+### 4、读写锁
 　　读写锁将对一个资源（比如文件）的访问分成了2个锁，一个读锁和一个写锁。
 　　正因为有了读写锁，才使得多个线程之间的读操作不会发生冲突。
 　　ReadWriteLock就是读写锁，它是一个接口，ReentrantReadWriteLock实现了这个接口。
