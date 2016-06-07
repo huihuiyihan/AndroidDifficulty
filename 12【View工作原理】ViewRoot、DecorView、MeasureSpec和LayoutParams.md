@@ -4,7 +4,6 @@ date: 2016-06-07 19:28
 tags:
   - View
   - Window
-type: "tags"
 ---
 
 ## 一、窗口层级关系
