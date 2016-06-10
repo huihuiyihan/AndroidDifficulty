@@ -34,3 +34,5 @@ Andorid学习过程中的重难点整理，还包括一些读书笔记
 [11【Android学习笔记】Android RecyclerView 使用完全解析 体验艺术般的控件](https://github.com/miomin/AndroidDifficulty/blob/master/11%E3%80%90Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91Android%20RecyclerView%20%E4%BD%BF%E7%94%A8%E5%AE%8C%E5%85%A8%E8%A7%A3%E6%9E%90%20%E4%BD%93%E9%AA%8C%E8%89%BA%E6%9C%AF%E8%88%AC%E7%9A%84%E6%8E%A7%E4%BB%B6.md)
 
 [12【View工作原理】ViewRoot、DecorView、MeasureSpec和LayoutParams](https://github.com/miomin/AndroidDifficulty/blob/master/12%E3%80%90View%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E3%80%91ViewRoot%E3%80%81DecorView%E3%80%81MeasureSpec%E5%92%8CLayoutParams.md)
+
+[13【自定义View】01--常用工具介绍](https://github.com/miomin/AndroidDifficulty/blob/master/13%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E3%80%9101--%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D.md)
