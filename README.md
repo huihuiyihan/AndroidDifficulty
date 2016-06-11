@@ -36,3 +36,5 @@ Andorid学习过程中的重难点整理，还包括一些读书笔记
 [12【View工作原理】ViewRoot、DecorView、MeasureSpec和LayoutParams](https://github.com/miomin/AndroidDifficulty/blob/master/12%E3%80%90View%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E3%80%91ViewRoot%E3%80%81DecorView%E3%80%81MeasureSpec%E5%92%8CLayoutParams.md)
 
 [13【自定义View】01--常用工具介绍](https://github.com/miomin/AndroidDifficulty/blob/master/13%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E3%80%9101--%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D.md)
+
+[14【自定义View】02--measure源码详尽分析](https://github.com/miomin/AndroidDifficulty/blob/master/14%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E3%80%9102--measure%E6%BA%90%E7%A0%81%E8%AF%A6%E5%B0%BD%E5%88%86%E6%9E%90.md)
