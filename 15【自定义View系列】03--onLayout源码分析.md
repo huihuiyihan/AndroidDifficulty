@@ -1,11 +1,3 @@
----
-title: 【自定义View系列】03--onLayout源码分析
-date: 2016-06-24 19:28
-tags:
-  - 自定义View
-  - layout
-type: "tags"
----
 
 本文转载自：http://blog.csdn.net/lfdfhl/article/details/51393131
 
@@ -19,7 +11,6 @@ type: "tags"
 
 先看View的layout( )方法：
 
-<!--more-->
 
 ``` Java
 //l, t, r, b分别表示子View相对于父View的左、上、右、下的坐标
