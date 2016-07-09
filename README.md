@@ -40,3 +40,5 @@ Andorid学习过程中的重难点整理，还包括一些读书笔记
 [14【自定义View】02--measure源码详尽分析](https://github.com/miomin/AndroidDifficulty/blob/master/14%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E3%80%9102--measure%E6%BA%90%E7%A0%81%E8%AF%A6%E5%B0%BD%E5%88%86%E6%9E%90.md)
 
 [15【自定义View系列】03--onLayout源码分析](https://github.com/miomin/AndroidDifficulty/blob/master/15%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%B3%BB%E5%88%97%E3%80%9103--onLayout%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
+
+[16【自定义View系列】04--谈谈事件分发](https://github.com/miomin/AndroidDifficulty/blob/master/16%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%B3%BB%E5%88%97%E3%80%9104--%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91.md)
