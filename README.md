@@ -42,3 +42,5 @@ Andorid学习过程中的重难点整理，还包括一些读书笔记
 [15【自定义View系列】03--onLayout源码分析](https://github.com/miomin/AndroidDifficulty/blob/master/15%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%B3%BB%E5%88%97%E3%80%9103--onLayout%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
 
 [16【自定义View系列】04--谈谈事件分发](https://github.com/miomin/AndroidDifficulty/blob/master/16%E3%80%90%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%B3%BB%E5%88%97%E3%80%9104--%E8%B0%88%E8%B0%88%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91.md)
+
+[17【Android源码阅读】RecyclerView源码分析（未完待续）(https://github.com/miomin/AndroidDifficulty/blob/master/17%E3%80%90Android%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E3%80%91RecyclerView%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%EF%BC%89.md)
